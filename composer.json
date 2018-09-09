@@ -1,0 +1,16 @@
+{
+	"name" : "lsys/paygateway-dome",
+	"license": "Apache-2.0",
+	"description" : "lsys module paygateway dome",
+	"require" : {
+		"lsys/paygateway" : "~1.0.0",
+		"lsys/paygateway-loger" : "dev-master",
+		"lsys/paygateway-alipay":"dev-master",
+		"lsys/paygateway-baidu":"dev-master",
+		"lsys/paygateway-jd":"dev-master",
+		"lsys/paygateway-palpay":"dev-master",
+		"lsys/paygateway-qpay":"dev-master",
+		"lsys/paygateway-unionpay":"dev-master",
+		"lsys/paygateway-wechat":"dev-master"
+	}
+}
