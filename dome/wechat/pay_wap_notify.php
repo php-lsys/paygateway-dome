@@ -2,7 +2,7 @@
 use LSYS\PayGateway\Adapter\Wechat\PayWapMgr;
 include __DIR__."/../Bootstarp.php";
 include_once './WxPay.Config.php';
-$config=\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr();
-$pay=(new PayWapMgr(WEIXINWAP))->pay_create($config);
+$config=\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr();
+$pay=(new PayWapMgr(WEIXINWAP))->payCreate($config);
 
-pay_notify($pay,$pay->pay_notify()); 
+pay_notify($pay,$pay->payNotify()); 

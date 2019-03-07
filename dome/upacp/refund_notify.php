@@ -5,6 +5,6 @@ include __DIR__."/../Bootstarp.php";
 $config=include_once 'cfg.php';
 
 
-$refund=(new PayMgr(UINONPAY))->refund_create($config);
-refund_callback($refund,$refund->refund_notify());
+$refund=(new PayMgr(UINONPAY))->refundCreate($config);
+refund_callback($refund,$refund->refundNotify());
 

@@ -17,17 +17,17 @@ $order_no='PD161227181618164245';//订单号
 $pay_no='2016122721001004910237058479';//支付号
 $total='27.500';//支付总额
 $MONEY='0.49';//退款额
-$mgr=LSYS\PayGateway\DI::get()->paygateway_paymgr();
-$refund=$mgr->find_refund($name);
+$mgr=LSYS\PayGateway\DI::get()->paygatewayPaymgr();
+$refund=$mgr->findRefund($name);
 if (!$refund){
     die('不支持退款');
 }
-$pay_utils=$refund->refund_create($config[$name]['refund_config']);
+$pay_utils=$refund->refundCreate($config[$name]['refund_config']);
 
 //支付回调出错情况下手动同步订单状态....
 //不要以次条件为是否扣款依据.只记录状态,失败最好人工介入
 $param= new \LSYS\PayGateway\Pay\RefundParam($order_no, $pay_no, $total,$MONEY);
-$param->set_return_no(Utils::snno_create('REFUND'));//设置退款号,不设置自动生成
+$param->setReturnNo(Utils::snnoCreate('REFUND'));//设置退款号,不设置自动生成
 $result=$pay_utils->refund($param);
 if ($result instanceof SuccResult){
 	print_r($result);//完成退款
@@ -35,7 +35,7 @@ if ($result instanceof SuccResult){
 	print_r($result);//退款申请中,可能退款还没完成..
 }else{
 	echo "退款失败:";
-	print_r($result->get_msg());//完成退款
+	print_r($result->getMsg());//完成退款
 }
 
 

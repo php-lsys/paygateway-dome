@@ -3,7 +3,7 @@
 	"license": "Apache-2.0",
 	"description" : "lsys module paygateway dome",
 	"require" : {
-		"lsys/paygateway" : "~1.0.0",
+		"lsys/paygateway" : "~2.0.0",
 		"lsys/paygateway-loger" : "dev-master",
 		"lsys/paygateway-alipay":"dev-master",
 		"lsys/paygateway-baidu":"dev-master",

@@ -3,15 +3,15 @@ use LSYS\PayGateway\Pay\PayAdapter;
 
 require_once  __DIR__."/Bootstarp.php";
 require_once  __DIR__."/pay_public.php";
-$mgr=LSYS\PayGateway\DI::get()->paygateway_paymgr();
+$mgr=LSYS\PayGateway\DI::get()->paygatewayPaymgr();
 
-function to_pay($name,$bank=null){
+function toPay($name,$bank=null){
 	echo " <a href='./pay.php?name={$name}&key={$bank}&amount=0.01'>pay click</a> ";
 }
 
-foreach ($mgr->find_all(PayAdapter::TYPE_WECHAT) as $v){
-    $k=$v->get_name();
-    $keys=$v->pay_more_key();
+foreach ($mgr->findAll(PayAdapter::TYPE_WECHAT) as $v){
+    $k=$v->getName();
+    $keys=$v->payMoreKey();
     if (is_array($keys)){
         echo "items:<div>";
         foreach ($keys as $key){

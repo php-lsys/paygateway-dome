@@ -7,14 +7,14 @@ include_once 'alipay.config.php';
 $type=ALIPAYWAP;
 switch ($type){
     case ALIPAYWAP:
-        $refund=(new PayWapMgr($type))->refund_create($alipay_config);
+        $refund=(new PayWapMgr($type))->refundCreate($alipay_config);
     break;
     case ALIPAYPC:
-        $refund=(new PayWebMgr($type))->refund_create($alipay_config);
+        $refund=(new PayWebMgr($type))->refundCreate($alipay_config);
     break;
     case ALIPAYAPP:
-        $refund=(new PayAppMgr($type))->refund_create($alipay_config);
+        $refund=(new PayAppMgr($type))->refundCreate($alipay_config);
     break;
     default:die('bad');
 }
-refund_callback($refund,$refund->refund_notify());
+refund_callback($refund,$refund->refundNotify());

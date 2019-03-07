@@ -19,13 +19,13 @@ $name=ALIPAYWAP;//支付类型
 $order_no='MY161227155854705';//订单号
 $pay_no='2016122721001004910236848403';//支付号
 $create_time=time();//订单创建时间
-$mgr=LSYS\PayGateway\DI::get()->paygateway_paymgr();
+$mgr=LSYS\PayGateway\DI::get()->paygatewayPaymgr();
 $pay=$mgr->find($name);
 if (!$pay){
     die('支付方式错误');
 }
 
-$pay=$pay->pay_create($config[$name]['pay_config']);
+$pay=$pay->payCreate($config[$name]['pay_config']);
 if(!$pay instanceof Query){
     die('不支持查询');
 }
@@ -34,7 +34,7 @@ $result = $pay->query($param);
 if ($result instanceof SuccResult){
     result_callback($pay,$result);//完成交易...
 }else{
-    print_r($result->get_raw());
+    print_r($result->getRaw());
 }
 
 

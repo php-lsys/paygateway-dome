@@ -1,7 +1,7 @@
 <?php
 require_once  __DIR__."/Bootstarp.php";
 
-$mgr=LSYS\PayGateway\DI::get()->paygateway_paymgr();
+$mgr=LSYS\PayGateway\DI::get()->paygatewayPaymgr();
 
 
 include_once 'wechat/WxPay.Config.php';
@@ -83,18 +83,18 @@ $config=array(
     ),
     WEIXINAPP=>array(
         'adapter'=>\LSYS\PayGateway\Adapter\Wechat\PayAppMgr::class,
-        'pay_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr(),
-        'refund_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr(),
+        'pay_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr(),
+        'refund_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr(),
     ),
     WEIXINWEB=>array(
         'adapter'=>\LSYS\PayGateway\Adapter\Wechat\PayCodeMgr::class,
-        'pay_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr(),
-        'refund_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr(),
+        'pay_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr(),
+        'refund_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr(),
     ),
     WEIXINWAP=>array(
         'adapter'=>\LSYS\PayGateway\Adapter\Wechat\PayWapMgr::class,
-        'pay_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr(),
-        'refund_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr(),
+        'pay_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr(),
+        'refund_config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr(),
     ),
 );
 

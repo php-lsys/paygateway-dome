@@ -6,11 +6,11 @@ $config=include_once 'cfg.php';
 $type=JDWEB;
 switch ($type){
     case JDWEB:
-        $refund=(new PayWebMgr($type))->refund_create($config);
+        $refund=(new PayWebMgr($type))->refundCreate($config);
         break;
     case JDWAP:
-        $refund=(new PayWapMgr($type))->refund_create($config);
+        $refund=(new PayWapMgr($type))->refundCreate($config);
         break;
     default:die('bad');
 }
-refund_callback($refund,$refund->refund_notify());
+refund_callback($refund,$refund->refundNotify());

@@ -3,23 +3,23 @@ use LSYS\PayGateway\Adapter\Wechat\PayWap;
 use LSYS\PayGateway\Adapter\Wechat\PayWapMgr;
 include __DIR__."/../Bootstarp.php";
 include_once './WxPay.Config.php';
-$pay_param=PayWap::get_pay_param();
+$pay_param=PayWap::getPayParam();
 if (!$pay_param){
 	http_response_code(400);
 	$msg="无法获取SESSION";
 }else{
-	function url_add_param($url,$param){
+	function urlAddParam($url,$param){
 		if(strpos($url,"?")===false) return $url."?".$param;
 		else return $url."&".$param;
 	}
-	$config=\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr();
-	$pay=(new PayWapMgr(WEIXINWAP))->pay_create($config);
+	$config=\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr();
+	$pay=(new PayWapMgr(WEIXINWAP))->payCreate($config);
 	try{
-		$js=$pay->get_pay_js($pay_param);
+		$js=$pay->getPayJs($pay_param);
 	}catch (\LSYS\PayGateway\Exception $e){
 		$msg=$e->getMessage();
 	}
-	if (isset($js))$html=$pay->render_js($pay_param, $js,$is_auto_pay=0/*是否立即调用支付*/);
+	if (isset($js))$html=$pay->renderJs($pay_param, $js,$is_auto_pay=0/*是否立即调用支付*/);
 }
 ?>
 <?php if (isset($html)):?>
@@ -48,21 +48,21 @@ if (!$pay_param){
 	<?php echo $html?>
 	<div class="pay_page">
 		<div class="order_page">
-        <h1 class="pay_title">订单:<?php echo $pay_param->get_sn()?></h1>
+        <h1 class="pay_title">订单:<?php echo $pay_param->getSn()?></h1>
 		<div class="weui-form-preview">
             <div class="weui-form-preview__hd">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">付款金额</label>
-                    <em class="weui-form-preview__value">¥<?php echo $pay_param->get_money()?></em>
+                    <em class="weui-form-preview__value">¥<?php echo $pay_param->getMoney()?></em>
                 </div>
             </div>
             <div class="weui-form-preview__bd">
                 <div class="weui-form-preview__item">
                     <label class="weui-form-preview__label">订单名称</label>
-                    <span class="weui-form-preview__value"><?php echo $pay_param->get_title()?></span>
+                    <span class="weui-form-preview__value"><?php echo $pay_param->getTitle()?></span>
                 </div>
                <?php 
-               	$timeout=$pay_param->get_timeout();
+               	$timeout=$pay_param->getTimeout();
                	if($timeout>0):
                	$timeout=date("Y-m-d H:i:s",time()+$timeout);
                ?>

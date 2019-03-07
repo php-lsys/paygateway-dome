@@ -3,7 +3,7 @@ require_once  __DIR__."/Bootstarp.php";
 
 include_once 'wechat/WxPay.Config.php';
 
-$mgr=LSYS\PayGateway\DI::get()->paygateway_transfersmgr();
+$mgr=LSYS\PayGateway\DI::get()->paygatewayTransfersmgr();
 
 
 include_once 'alipay/alipay.config.php';
@@ -15,7 +15,7 @@ $config=array(
     ),
     "weixin"=>array(
         'adapter'=>\LSYS\PayGateway\Adapter\Wechat\TransfersMgr::class,
-        'config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfig_to_arr(),
+        'config'=>\LSYS\PayGateway\Adapter\Wechat\PayWapConfig::WxPayConfigToArr(),
     ),
 );
 foreach ($config as $k=>$v){

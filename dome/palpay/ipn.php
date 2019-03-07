@@ -6,14 +6,14 @@ use LSYS\PayGateway\Adapter\Palpay\Config;
 include __DIR__."/../Bootstarp.php";
 $_config=include_once './cfg.php';
 $ipn=new IPN(Config::arr($_config));
-switch ($ipn->get_type()){
+switch ($ipn->getType()){
 	case IPN::TYPE_PAYCALLBACK:
-		pay_notify($ipn,$ipn->pay_notify());
-		$ipn->pay_notify_output(true);
+		pay_notify($ipn,$ipn->payNotify());
+		$ipn->payNotifyOutput(true);
 	break;
 	case IPN::TYPE_REFUND:
-	    refund_callback($ipn,$ipn->refund_notify());
-		$ipn->refund_notify_output(true);
+	    refund_callback($ipn,$ipn->refundNotify());
+		$ipn->refundNotifyOutput(true);
 	break;
 	case IPN::TYPE_INVALID:
 		$ipn->output(false);

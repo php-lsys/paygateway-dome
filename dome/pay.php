@@ -9,9 +9,9 @@ require_once  __DIR__."/pay_public.php";
  */
 
 $name=@$_GET['name'];
-$order_no=isset($_GET['order_no'])?$_GET['order_no']:LSYS\PayGateway\Utils::snno_create('MY');
+$order_no=isset($_GET['order_no'])?$_GET['order_no']:LSYS\PayGateway\Utils::snnoCreate('MY');
 $amount=isset($_GET['amount'])?$_GET['amount']:1;
-$mgr=LSYS\PayGateway\DI::get()->paygateway_paymgr();
+$mgr=LSYS\PayGateway\DI::get()->paygatewayPaymgr();
 /**
  * @var \LSYS\PayGateway\PayMgr $mgr
  */
@@ -21,16 +21,16 @@ $pay=$mgr->find($name);
 if (!$pay){
 	die('支付方式错误');
 }
-$pay=$pay->pay_create($config[$name]['pay_config']);
+$pay=$pay->payCreate($config[$name]['pay_config']);
 if ($pay instanceof PayAdapterMore){
     $key=isset($_GET['key'])?$_GET['key']:'boc';
-    $res=$pay->pay_render($key,$pay_param);
+    $res=$pay->payRender($key,$pay_param);
 }else {
-    $res=$pay->pay_render($pay_param);
+    $res=$pay->payRender($pay_param);
 }
 echo $res;
 
 //自定义前端JS处理...
-$type=$res->get_out();
+$type=$res->getOut();
 include_once 'js.php';
 
